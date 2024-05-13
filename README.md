@@ -2,7 +2,7 @@
 Team members:
 - Tarik Alaiwi
 - Ela 
-- Tomek 
+- Tomek Budzejko
 - Artur Sierakowski
 
 **Aim of the project**
