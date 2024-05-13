@@ -3,7 +3,7 @@ Team members:
 - Tarik Alaiwi
 - Ela 
 - Tomek 
-- Artur 
+- Artur Sierakowski
 
 **Aim of the project**
 Detecting photovoltaics from satellite pictures
