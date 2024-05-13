@@ -1,7 +1,7 @@
 # Project: name of project
 Team members:
 - Tarik Alaiwi
-- Ela 
+- Ela Witkiewicz
 - Tomek Budzejko
 - Artur Sierakowski
 
