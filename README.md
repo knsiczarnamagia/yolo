@@ -14,7 +14,7 @@ Detecting photovoltaics from satellite pictures
 - Baseline model: 10.05.2024 
 - Demo: 19.05.2024 
 - Presentation: 22.05.2024 
-- Project publication: 26.0.2024 
+- Project publication: 26.05.2024 
 
 **Links**
 - [Repository](https://github.com/knsiczarnamagia/yolo.git)
@@ -23,4 +23,4 @@ Detecting photovoltaics from satellite pictures
 
 **Tools and specification**
 - Python version: 3.12.2
-- Dependency Manager: (conda)
+- Dependency Manager: pip
