@@ -4,11 +4,10 @@ import numpy as np
 from PIL import Image
 from ultralytics import YOLO
 
-# Load the model
 model = YOLO('best.pt')
 
-# Path to the photos folder
 photos_folder = "Photos"
+
 
 def load_images_from_folder(folder):
     images = []
@@ -18,6 +17,7 @@ def load_images_from_folder(folder):
             img = Image.open(img_path)
             images.append((img, filename))
     return images
+
 
 def predict(image):
     try:
@@ -29,6 +29,7 @@ def predict(image):
         print(f"Error during prediction: {e}")
         return "Error"
 
+
 def load_image_from_gallery(images, index):
     if images and 0 <= index < len(images):
         image = images[index]
@@ -37,45 +38,52 @@ def load_image_from_gallery(images, index):
         return image
     return None
 
+
 def gallery_click_event(images, evt: gr.SelectData):
     index = evt.index
     selected_img = load_image_from_gallery(images, index)
     return selected_img
 
+
 def clear_image():
     return None
 
-# Load images at the start
-images = load_images_from_folder(photos_folder)
 
-with gr.Blocks(css=".container { background-color: white; }") as demo:
-    with gr.Row():
-        with gr.Column():
-            selected_image = gr.Image(label="Selected Image from Gallery", type="pil")
-            clear_button = gr.Button("Clear")
-        
-        with gr.Column():
-            image_gallery = gr.Gallery(label="Image Gallery", elem_id="gallery", type="pil", value=[img for img, _ in images])
-        
-        with gr.Column():
-            result_image = gr.Image(label="Result Image", type="pil")
+def app():
+    images = load_images_from_folder(photos_folder)
 
-    image_gallery.select(
-        fn=gallery_click_event, 
-        inputs=image_gallery, 
-        outputs=selected_image
-    )
-    
-    selected_image.change(
-        fn=predict, 
-        inputs=selected_image, 
-        outputs=result_image
-    )
+    with gr.Blocks(css=".container { background-color: white; }") as demo:
+        with gr.Row():
+            with gr.Column():
+                selected_image = gr.Image(label="Selected Image from Gallery", type="pil")
+                clear_button = gr.Button("Clear")
 
-    clear_button.click(
-        fn=clear_image,
-        inputs=None,
-        outputs=selected_image
-    )
+            with gr.Column():
+                image_gallery = gr.Gallery(label="Image Gallery", elem_id="gallery", type="pil", value=[img for img, _ in images])
 
-demo.launch()
+            with gr.Column():
+                result_image = gr.Image(label="Result Image", type="pil")
+
+        image_gallery.select(
+            fn=gallery_click_event,
+            inputs=image_gallery,
+            outputs=selected_image
+        )
+
+        selected_image.change(
+            fn=predict,
+            inputs=selected_image,
+            outputs=result_image
+        )
+
+        clear_button.click(
+            fn=clear_image,
+            inputs=None,
+            outputs=selected_image
+        )
+
+    demo.launch()
+
+
+if __name__ == "__main__":
+    app()
