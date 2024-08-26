@@ -5,7 +5,7 @@ Team members:
 - Artur Sierakowski
 
 **Aim of the project** \
-Detecting solar panels from satellite pictures.
+Detecting solar panels from satellite pictures using YOLOv9.
 
 **Milestones**
 - Initial research: 30.04.2024 
